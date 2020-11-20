@@ -1,0 +1,26 @@
+[
+  {
+    "model": "levelupapi.game",
+    "pk": 1,
+    "fields": {
+      "title": "Final Fantasy XIV",
+      "maker": "Game1Maker",
+      "skill_level": 1,
+      "gamer": 1,
+      "game_type": 3,
+      "number_of_players": 1
+    }
+  },
+  {
+    "model": "levelupapi.game",
+    "pk": 2,
+    "fields": {
+      "title": "Persona 5: Royal",
+      "maker": "Game2Maker",
+      "skill_level": 2,
+      "gamer": 1,
+      "game_type": 2,
+      "number_of_players": 2
+    }
+  }
+]
