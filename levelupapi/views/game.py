@@ -1,11 +1,10 @@
 """View module for handling requests about games"""
 from django.core.exceptions import ValidationError
-from rest_framework import status
 from django.http import HttpResponseServerError
+from rest_framework import status
 from rest_framework.viewsets import ViewSet
 from rest_framework.response import Response
 from rest_framework import serializers
-from rest_framework import status
 from levelupapi.models import Game, GameType, Gamer
 
 
@@ -51,8 +50,6 @@ class Games(ViewSet):
         # client that something was wrong with its request data
         except ValidationError as ex:
             return Response({"reason": ex.message}, status=status.HTTP_400_BAD_REQUEST)
-
-
 
     def retrieve(self, request, pk=None):
         """Handle GET requests for single game
@@ -137,6 +134,7 @@ class Games(ViewSet):
             games, many=True, context={'request': request})
         return Response(serializer.data)
 
+
 class GameSerializer(serializers.HyperlinkedModelSerializer):
     """JSON serializer for games
 
@@ -149,5 +147,6 @@ class GameSerializer(serializers.HyperlinkedModelSerializer):
             view_name='game',
             lookup_field='id'
         )
-        fields = ('id', 'url', 'title', 'maker', 'number_of_players', 'skill_level', 'gametype')
+        fields = ('id', 'url', 'title', 'maker',
+                  'number_of_players', 'skill_level', 'game_type')
         depth = 1

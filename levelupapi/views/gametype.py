@@ -17,7 +17,8 @@ class GameTypes(ViewSet):
         """
         try:
             game_type = GameType.objects.get(pk=pk)
-            serializer = GameTypeSerializer(game_type, context={'request': request})
+            serializer = GameTypeSerializer(
+                game_type, context={'request': request})
             return Response(serializer.data)
         except Exception as ex:
             return HttpResponseServerError(ex)
@@ -30,12 +31,14 @@ class GameTypes(ViewSet):
         """
         gametypes = GameType.objects.all()
 
-        # Note the addtional `many=True` argument to the
+        # Note the additional `many=True` argument to the
         # serializer. It's needed when you are serializing
         # a list of objects instead of a single object.
         serializer = GameTypeSerializer(
             gametypes, many=True, context={'request': request})
+
         return Response(serializer.data)
+
 
 class GameTypeSerializer(serializers.HyperlinkedModelSerializer):
     """JSON serializer for game types
